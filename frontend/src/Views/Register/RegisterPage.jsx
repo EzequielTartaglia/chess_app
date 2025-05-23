@@ -45,8 +45,8 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className='h-screen flex justify-center items-center register_page'>
-            <div className="container border-3 border-border-color bg-background-yellow text-font-color-black min-w-[480px] p-5">
+        <div className='min-h-screen flex justify-center items-center register_page p-4'>
+            <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[650px] p-5">
                 <section className='hero text-center relative'>
                     <h2 className='text-2xl mb-10'>LOGO EMPRESA</h2>
                     <Link className='closeBtn absolute top-0 right-0 p-1 cursor-pointer' href={'/'}>
@@ -93,10 +93,10 @@ export default function RegisterPage() {
                         
                     </label>
 
-                    <div className="buttons flex justify-center items-center gap-2.5 h-16 mt-5">
-                        <button type="submit" className='flex justify-center items-center gap-4 w-full h-full bg-border-color text-background-yellow cursor-pointer uppercase font-bold border-none text-xl hover:bg-background transition-all duration-300 ease-in-out'>Registrar</button>
-                        <button className='terms'>
-                            <Link href={'terms'} className='flex justify-center items-center gap-4 w-full h-full bg-background-orange text-white cursor-pointer uppercase font-bold no-underline border-none hover:bg-background-orange-dark transition-all duration-300 ease-in-out'>Términos y condic</Link>
+                    <div className="buttons flex flex-col md:flex-row justify-center items-center gap-2.5 h-auto mt-5">
+                        <button type="submit" className='flex justify-center items-center gap-4 w-full h-12 bg-border-color text-background-yellow cursor-pointer uppercase font-bold border-none text-xl hover:bg-background transition-all duration-300 ease-in-out'>Registrar</button>
+                        <button className='terms w-full'>
+                            <Link href={'terms'} className='flex justify-center items-center gap-4 w-full h-12 bg-background-orange text-white cursor-pointer uppercase font-bold no-underline border-none hover:bg-background-orange-dark transition-all duration-300 ease-in-out'>Términos y condic</Link>
                         </button>
                     </div>
 
