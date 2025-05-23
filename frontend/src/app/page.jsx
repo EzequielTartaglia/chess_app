@@ -67,8 +67,8 @@ export default function HomePage() {
             customClasses="w-[95px] h-[32px]
               font-['Agency_FB'] font-bold text-[9px] 
               leading-[3px] 
-              text-[#F5E2A0] 
-              bg-[#101010] 
+              text-primary 
+              bg-primary 
               flex items-center justify-center 
               text-center hover:opacity-90
               transition-opacity duration-200"
@@ -79,8 +79,8 @@ export default function HomePage() {
             customClasses="w-[95px] h-[32px]
               font-['Agency_FB'] font-bold text-[9px] 
               leading-[3px] 
-              text-[#F5E2A0] 
-              bg-[#101010] 
+              text-primary
+              bg-primary 
               flex items-center justify-center 
               text-center hover:opacity-90
               transition-opacity duration-200"
@@ -91,8 +91,8 @@ export default function HomePage() {
             customClasses="w-[90px] h-[30.69px] 
               font-['Agency_FB'] font-bold text-[19px] 
               leading-[3px]
-              bg-[#101010]  
-              text-[#F5E2A0] 
+              bg-primary   
+              text-primary 
               flex items-center justify-center 
               text-center hover:opacity-90
               transition-opacity duration-200"
