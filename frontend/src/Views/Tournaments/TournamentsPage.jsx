@@ -6,6 +6,7 @@ import Image from "next/image";
 import { fetchWithAuth } from "../../../utils/api";
 
 import Navbar from "@/components/navbar";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function TournamentsPage() {
   const router = useRouter();
@@ -20,8 +21,7 @@ export default function TournamentsPage() {
     setError(null);
 
     try {
-      const apiUrl =
-        process.env.NEXT_PUBLIC_DJANGO_URL;
+      const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL;
       const response = await fetchWithAuth(`${apiUrl}/api/tournaments/`);
 
       if (!response.ok) {
@@ -92,7 +92,6 @@ export default function TournamentsPage() {
   }
 
   function handleRowClick(tournament) {
-    console.log("Row clicked:", tournament);
     router.push(`/tournaments/${tournament.id}`);
   }
 
@@ -100,11 +99,7 @@ export default function TournamentsPage() {
     <div className="tournaments_page">
       <Navbar />
 
-      {loading ? (
-        <></>
-      ) : error ? (
-        <></>
-      ) : (
+      {!loading && !error && (
         <div className="tournaments__filter">
           <label htmlFor="stateFilter">Filtrar por estado</label>
           <select id="stateFilter" onChange={(e) => setFilter(e.target.value)}>
@@ -118,7 +113,9 @@ export default function TournamentsPage() {
 
       <div className="tournaments">
         {loading ? (
-          <p>Cargando torneos…</p>
+          <div className="flex justify-center items-center py-10">
+            <LoadingSpinner />
+          </div>
         ) : error ? (
           <div className="tournaments__error">
             <p>{error}</p>
