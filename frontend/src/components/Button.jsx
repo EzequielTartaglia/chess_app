@@ -37,7 +37,7 @@ export default function Button({
         text-center
         hover:opacity-90
         transition-opacity duration-200
-        ${className} 
+        ${customClasses} 
       `}
         onClick={onClick}
       >

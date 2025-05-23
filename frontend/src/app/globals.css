@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
     --background: #101010;
     --background-yellow: #F5E2A0;
@@ -10,7 +14,28 @@
     --border-color-light: #282828a9;
 
     --font-color-black: #101010;
+    --font-color-yellow: #F5E2A0;
 }
+
+.bg-primary {
+  background-color: var(--background);
+}
+.bg-secondary {
+  background-color: var(--background-yellow);
+}
+.bg-tertiary {
+  background-color: var(--background-orange);
+}
+.bg-quaternary {
+  background-color: var(--background-orange-dark);
+}
+.bg-quinary {
+  background-color: var(--background-footer);
+}
+.text-primary {
+  color: var(--font-color-yellow);
+}
+
 
 *{
     box-sizing: border-box;
@@ -21,6 +46,8 @@
 html {
   font-size: 16px;
 }
+
+
 
 body{
     background: var(--background);
