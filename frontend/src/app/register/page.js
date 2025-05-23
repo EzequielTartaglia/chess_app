@@ -15,7 +15,7 @@ export default function RegisterPage() {
     const [terms, setTerms] = useState(false);
     const router = useRouter();
 
-    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL || 'http://127.0.0.1:8000';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
