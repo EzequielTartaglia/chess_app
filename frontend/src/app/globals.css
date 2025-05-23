@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --background: #101010;
-    --background-yellow: #F5E2A0;
-    --background-orange: #E64734;
-    --background-orange-dark: #ff270f;
-    --background-footer: #E03056;
+:root {
+  --background: #101010;
+  --background-yellow: #f5e2a0;
+  --background-orange: #e64734;
+  --background-orange-dark: #ff270f;
+  --background-footer: #e03056;
 
-    --border-radius: 50px;
-    --border-color: #282828;
-    --border-color-light: #282828a9;
+  --border-radius: 50px;
+  --border-color: #282828;
+  --border-color-light: #282828a9;
 
-    --font-color-black: #101010;
-    --font-color-yellow: #F5E2A0;
+  --font-color-black: #101010;
+  --font-color-yellow: #f5e2a0;
 }
 
 .bg-primary {
@@ -36,552 +36,543 @@
   color: var(--font-color-yellow);
 }
 
-
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
   font-size: 16px;
 }
 
-
-
-body{
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+body {
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
 
 /* LOGIN - REGISTER */
-.login_page, .register_page{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .container{
-        border: 3px solid var(--border-color);
-        background: var(--background-yellow);
-        color: var(--font-color-black);
-        min-width: 480px;
-        padding: 20px;
-
-        .hero{
-            text-align: center;
-            position: relative;
-
-            h2{
-                font-size: 2rem;
-                margin-bottom: 40px;
-            }
-
-            .closeBtn{
-                position: absolute;
-                top: 0;
-                right: 0;
-                padding: 5px;
-                cursor: pointer;
-            }
-        }
-
-        form{
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-
-            label{
-                display: block;
-                margin-bottom: 10px;
-                width: 100%;
-
-                input{
-                    width: 100%;
-                    padding: 5px 10px;
-                    font-size: 1.1rem;
-                    border: 3px solid var(--border-color);
-                    background: var(--background);
-                    color: var(--background-yellow);
-                    text-align: center;
-
-                    &:focus-visible{
-                        outline: none;
-                    }
-                }
-            }
-
-            .buttons{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                column-gap: 10px;
-                height: 65px;
-                margin-top: 25px;
-
-                button, a{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    column-gap: 15px;
-
-                    width: 100%;
-                    height: 100%;
-                    background-color: var(--background);
-                    color: var(--background-yellow);
-                    cursor: pointer;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    font-weight: bold;
-                    border: none;
-
-
-                    &:hover{
-                        transition: all 0.3s ease-in-out;
-                    }
-                }
-
-                button{
-                    background-color: var(--border-color);
-                    color: var(--background-yellow);
-                    font-size: 1.5rem;
-
-                    &:hover{
-                        background-color: var(--background);
-                    }
-                }
-
-                a{
-                    background-color: var(--background-orange);
-                    color: #ffffff;
-
-                    &:hover{
-                        background-color: var(--background-orange-dark);
-                    }
-                }
-
-            }
-        }
-
-        .options{
-            text-align: center;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            font-weight: bold;
-
-            a{
-                text-decoration: none;
-                color: var(--background-orange);
-                margin-left: 20px;
-            }
-        }
-    }
-}
-
-.register_page{
-    .hero{
-        vertical-align: bottom;
-    }
-
-    form{
-        label{
-            font-size: 1.4rem;
-        }
-
-        .termsLabel{
-            display: flex !important;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.7rem;
-            
-            span{
-                flex: 2;
-            }
-
-            .checkContainer{
-                flex: 1;
-            }
-
-            input[type="checkbox"]{
-                width: 2.7em;
-                height: 2.7em;
-                border: 0.15em solid currentColor;
-                border-radius: 0.15em;
-                transform: translateY(-0.075em);
-                
-                appearance: none;
-                background-color: var(--background-orange);
-                outline: 1px solid var(--border-color);
-            }
-
-            input[type="checkbox"]:not(:disabled):checked {
-                background-image: url('/check.svg');
-                background-size: contain;
-                background-repeat: no-repeat;
-            }
-        }
-
-        .buttons{
-            button, a{
-                font-size: 1.1rem;
-            }
-        }
-    }
-}
-
-
-/* TOURNAMENTS */
-.tournaments_page{
-
-    .tournaments{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-        height: calc(100vh - 160px - 160px);
-        /* padding-bottom: 280px; */
-
-
-        .tournaments__table{
-            width: 100%;
-            border-collapse: 'collapse';
-            color: var(--background-yellow); 
-            padding: 20px 40px;
-
-            th{
-                text-transform: uppercase;
-                font-size: 2rem;
-                padding: 0.5rem 1rem;
-            }
-
-            td {
-                font-size: 1.6rem;
-                padding: 0.5rem 1rem;
-                text-align: center;
-            }
-
-            tbody tr:nth-child(even) {
-                background-color: #171717;
-            }
-            
-            tbody tr:nth-child(odd) {
-                background-color: #282828;
-            }
-
-            .tournaments__empty{
-                text-align: center;
-            }
-
-            .tournament__row{
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-
-                &:hover{
-                    background-color: var(--border-color-light);
-                    transition: all 0.1s ease-in-out;
-                }
-            }
-        }
-
-        .tournaments__table th,
-        .tournaments__table td {
-            border: none;
-        }
-
-
-        button{
-            text-align: center;
-            background-color: var(--background-yellow);
-            color: var(--background-footer);
-            font-size: 1.7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 18px 48px;
-            margin-bottom: 30px;
-            border: none;
-            cursor: pointer;
-
-            &:hover{
-                background-color: var(--background-footer);
-                color: var(--background-yellow);
-                transition: all 0.3s ease-in-out;
-            }
-        }
-
-        .tournaments__error{
-            p{
-                text-align: center;
-                color: var(--background-orange);
-                font-size: 1rem;
-                margin-bottom: 10px;
-            }
-        }
-    }
-
-    .tournaments__filter{
-        margin-bottom: 20px;
-        padding: 10px 40px;
-
-        label{
-            font-size: 1.6rem;
-            text-align: center;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            color: var(--background-yellow);
-            margin-right: 10px;
-        }
-
-        select{
-            width: 270px;
-            padding: 5px 10px;
-            font-size: 1.2rem;
-            border: 1px solid var(--background-yellow);
-            background-color: var(--background);
-            color: var(--background-yellow);
-            text-align: center;
-            text-transform: uppercase;
-
-            &:focus-visible{
-                outline: none;
-            }
-        }
-    }
-
-
-}
-
-.tournaments_page footer, .tournament-detail_page footer{
-    /* position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0; */
-    background-color: var(--background-footer);
-    color: var(--background-yellow);
-    padding: 30px 60px;
-    height: 160px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p{
-        font-size: 5rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-}
-
-
-/* TOURNAMENT REGISTER */
-.tournament_register_page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-    .container{
-        background: var(--background-yellow);
-        color: var(--font-color-black);
-        padding: 40px;
-
-        h1{
-            text-align: center;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            font-size: 3rem;
-        }
-
-        form{
-            .inputs{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-
-                .left{
-                    flex: 1;
-                }
-
-                .right{
-                    flex: 1;
-
-                    input{
-                        width: 170px;
-                    }
-                }
-
-                label{
-                    display: block;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-wrap: nowrap;
-                    border: 2px solid var(--background);
-                    margin-bottom: 7px;
-                    font-weight: bold;
-                    text-transform: uppercase;
-
-                    span{
-                        padding-left: 10px;
-                    }
-                }
-
-                input, textarea, select{
-                    width: 100%;
-                    background: var(--background);
-                    padding: 10px;
-                    font-size: .8rem;
-                    color: #ffffff;
-                    border: none;
-                }
-
-                input::placeholder, textarea::placeholder{
-                    color: #ffffff;
-                    text-transform: uppercase;
-                }
-
-                input:focus-visible, textarea:focus-visible, select:focus-visible{
-                    outline: none;
-                }
-
-                input::-webkit-outer-spin-button,
-                input::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-
-                /* Firefox */
-                input[type=number] {
-                    -moz-appearance: textfield;
-                }
-
-
-            }
-
-            .actionsBtn{
-                text-align: right;
-
-                button, a{
-                    width: 150px;
-                    padding: 15px 0;
-                    font-size: 1.1rem;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    border: none;
-                    background: transparent;
-
-                    transition: all 0.3s ease-in-out;
-                    cursor: pointer;
-                }
-
-                .cancelBtn{
-                    text-decoration: none;
-                    margin-right: 10px;
-                    padding: 14px 40px;
-                    font-size: 1.2rem;
-                    color: var(--font-color-black);
-
-                    &:hover{
-                        color: #ffffff !important;
-                        background: var(--border-color);
-                    }
-
-                    &:visited{
-                        color: var(--font-color-black);
-                    }
-                    &:focus-visible{
-                        outline: none;
-                    }
-                    &:active{
-                        color: var(--border-color);
-                    }
-                }
-
-                button[type="submit"]{
-                    background: var(--background-orange);
-                    color: #ffffff;
-
-                    &:hover{
-                        background: var(--background-orange-dark);
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-/* TOURNAMENT DETAIL */
-.tournament-detail_page{
-    .tournament-detail{
-        height: calc(100vh - 160px - 160px);
-        color: var(--background-yellow);
-        padding: 20px 40px;
-        max-width: 1000px;
-        margin: 0 auto;
-
-        h1{
-            text-align: center;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        p{
-            font-size: 1.6rem;
-            margin-bottom: 7px;
-            
-        }
-    }
-    
-    footer{
-        justify-content: flex-end;
-    }
-}
-
-
-nav{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: column;
-    padding: 2rem;
-    height: 160px;
-
-    a{
-        text-decoration: none;
+.login_page,
+.register_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    border: 3px solid var(--border-color);
+    background: var(--background-yellow);
+    color: var(--font-color-black);
+    min-width: 480px;
+    padding: 20px;
+
+    .hero {
+      text-align: center;
+      position: relative;
+
+      h2 {
         font-size: 2rem;
-        color: var(--background-yellow);
+        margin-bottom: 40px;
+      }
+
+      .closeBtn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        cursor: pointer;
+      }
     }
 
-    .actions{
+    form {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+
+        input {
+          width: 100%;
+          padding: 5px 10px;
+          font-size: 1.1rem;
+          border: 3px solid var(--border-color);
+          background: var(--background);
+          color: var(--background-yellow);
+          text-align: center;
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
+
+      .buttons {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        column-gap: 10px;
+        height: 65px;
+        margin-top: 25px;
 
-        button{
-            background-color: var(--background-yellow);
-            border: none;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
+        button,
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          column-gap: 15px;
+
+          width: 100%;
+          height: 100%;
+          background-color: var(--background);
+          color: var(--background-yellow);
+          cursor: pointer;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-weight: bold;
+          border: none;
+
+          &:hover {
+            transition: all 0.3s ease-in-out;
+          }
         }
+
+        button {
+          background-color: var(--border-color);
+          color: var(--background-yellow);
+          font-size: 1.5rem;
+
+          &:hover {
+            background-color: var(--background);
+          }
+        }
+
+        a {
+          background-color: var(--background-orange);
+          color: #ffffff;
+
+          &:hover {
+            background-color: var(--background-orange-dark);
+          }
+        }
+      }
     }
 
-    .backBtn{
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        cursor: pointer;
-        background: none;
-        border: none;
+    .options {
+      text-align: center;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      font-weight: bold;
+
+      a {
+        text-decoration: none;
+        color: var(--background-orange);
+        margin-left: 20px;
+      }
     }
+  }
+}
+
+.register_page {
+  .hero {
+    vertical-align: bottom;
+  }
+
+  form {
+    label {
+      font-size: 1.4rem;
+    }
+
+    .termsLabel {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.7rem;
+
+      span {
+        flex: 2;
+      }
+
+      .checkContainer {
+        flex: 1;
+      }
+
+      input[type="checkbox"] {
+        width: 2.7em;
+        height: 2.7em;
+        border: 0.15em solid currentColor;
+        border-radius: 0.15em;
+        transform: translateY(-0.075em);
+
+        appearance: none;
+        background-color: var(--background-orange);
+        outline: 1px solid var(--border-color);
+      }
+
+      input[type="checkbox"]:not(:disabled):checked {
+        background-image: url("/check.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .buttons {
+      button,
+      a {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+/* TOURNAMENTS */
+.tournaments_page {
+  .tournaments {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 160px - 160px);
+    /* padding-bottom: 280px; */
+
+    .tournaments__table {
+      width: 100%;
+      border-collapse: "collapse";
+      color: var(--background-yellow);
+      padding: 20px 40px;
+
+      th {
+        text-transform: uppercase;
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+      }
+
+      td {
+        font-size: 1.6rem;
+        padding: 0.5rem 1rem;
+        text-align: center;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #171717;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #282828;
+      }
+
+      .tournaments__empty {
+        text-align: center;
+      }
+
+      .tournament__row {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: var(--border-color-light);
+          transition: all 0.1s ease-in-out;
+        }
+      }
+    }
+
+    .tournaments__table th,
+    .tournaments__table td {
+      border: none;
+    }
+
+    button {
+      text-align: center;
+      background-color: var(--background-yellow);
+      color: var(--background-footer);
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 18px 48px;
+      margin-bottom: 30px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--background-footer);
+        color: var(--background-yellow);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    .tournaments__error {
+      p {
+        text-align: center;
+        color: var(--background-orange);
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .tournaments__filter {
+    margin-bottom: 20px;
+    padding: 10px 40px;
+
+    label {
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: var(--background-yellow);
+      margin-right: 10px;
+    }
+
+    select {
+      width: 270px;
+      padding: 5px 10px;
+      font-size: 1.2rem;
+      border: 1px solid var(--background-yellow);
+      background-color: var(--background);
+      color: var(--background-yellow);
+      text-align: center;
+      text-transform: uppercase;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+}
+
+.tournaments_page footer,
+.tournament-detail_page footer {
+  /* position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+  background-color: var(--background-footer);
+  color: var(--background-yellow);
+  padding: 30px 60px;
+  height: 160px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-size: 5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+/* TOURNAMENT REGISTER */
+.tournament_register_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .container {
+    background: var(--background-yellow);
+    color: var(--font-color-black);
+    padding: 40px;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-size: 3rem;
+    }
+
+    form {
+      .inputs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .left {
+          flex: 1;
+        }
+
+        .right {
+          flex: 1;
+
+          input {
+            width: 170px;
+          }
+        }
+
+        label {
+          display: block;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          border: 2px solid var(--background);
+          margin-bottom: 7px;
+          font-weight: bold;
+          text-transform: uppercase;
+
+          span {
+            padding-left: 10px;
+          }
+        }
+
+        input,
+        textarea,
+        select {
+          width: 100%;
+          background: var(--background);
+          padding: 10px;
+          font-size: 0.8rem;
+          color: #ffffff;
+          border: none;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+          color: #ffffff;
+          text-transform: uppercase;
+        }
+
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+          outline: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+          -moz-appearance: textfield;
+        }
+      }
+
+      .actionsBtn {
+        text-align: right;
+
+        button,
+        a {
+          width: 150px;
+          padding: 15px 0;
+          font-size: 1.1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          border: none;
+          background: transparent;
+
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+        }
+
+        .cancelBtn {
+          text-decoration: none;
+          margin-right: 10px;
+          padding: 14px 40px;
+          font-size: 1.2rem;
+          color: var(--font-color-black);
+
+          &:hover {
+            color: #ffffff !important;
+            background: var(--border-color);
+          }
+
+          &:visited {
+            color: var(--font-color-black);
+          }
+          &:focus-visible {
+            outline: none;
+          }
+          &:active {
+            color: var(--border-color);
+          }
+        }
+
+        button[type="submit"] {
+          background: var(--background-orange);
+          color: #ffffff;
+
+          &:hover {
+            background: var(--background-orange-dark);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* TOURNAMENT DETAIL */
+.tournament-detail_page {
+  .tournament-detail {
+    height: calc(100vh - 160px - 160px);
+    color: var(--background-yellow);
+    padding: 20px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 7px;
+    }
+  }
+
+  footer {
+    justify-content: flex-end;
+  }
+}
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 2rem;
+  height: 160px;
+
+  a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--background-yellow);
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    button {
+      background-color: var(--background-yellow);
+      border: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  }
+
+  .backBtn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
 }
