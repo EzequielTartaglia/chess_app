@@ -14,11 +14,8 @@ export const UserInfoProvider = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Can access to preview without login
-    const isPreviewRoute = pathname.startsWith('/platform') && pathname.includes('/preview');
-    
-    if (!loading && !user && pathname.startsWith('/platform') && !isPreviewRoute) {
-      router.push('/platform'); 
+    if (!loading && !user && !pathname.startsWith('/login') && !pathname.startsWith('/register')) {
+      router.push('/'); 
     }
   }, [user, loading, router, pathname]);
 

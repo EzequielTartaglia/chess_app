@@ -8,7 +8,7 @@ export default function PlatformPage() {
 
   return (
     <>
-     Landing Page
+     Torneos
     </>
   );
 }
