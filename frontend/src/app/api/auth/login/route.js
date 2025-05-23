@@ -12,8 +12,8 @@ export async function POST(request) {
         );
     }
 
-    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL || 'http://127.0.0.1:8000';
-    
+    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL;
+
     const apiRes = await fetch(`${apiUrl}/api/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

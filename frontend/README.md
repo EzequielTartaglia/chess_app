@@ -170,7 +170,7 @@ Backend in Django + Django REST Framework; frontend in Next.js. Uses PostgreSQL 
 
 3. Create a .env file in the frontend root:
    ```
-   DJANGO_PUBLIC_API_URL=<backend url, e.g.: http://127.0.0.1:8000 >
+   NEXT_PUBLIC_DJANGO_URL=<backend url, e.g.: http://127.0.0.1:8000 >
    ```
 
 4. Run the development server:

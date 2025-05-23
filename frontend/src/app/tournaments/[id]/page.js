@@ -10,7 +10,7 @@ export default async function TournamentDetailPage({ params }) {
     const cookieStore = await cookies();
     const token = cookieStore.get('accessToken')?.value;
 
-    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL || 'http://127.0.0.1:8000';
+    const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL;
     const res = await fetch(`${apiUrl}/api/tournaments/${id}/`, {
         headers: {
             'Content-Type': 'application/json',

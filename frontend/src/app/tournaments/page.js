@@ -21,7 +21,7 @@ export default function TournamentsPage() {
 
     try {
       const apiUrl =
-        process.env.NEXT_PUBLIC_DJANGO_URL || "http://127.0.0.1:8000";
+        process.env.NEXT_PUBLIC_DJANGO_URL;
       const response = await fetchWithAuth(`${apiUrl}/api/tournaments/`);
 
       if (!response.ok) {
