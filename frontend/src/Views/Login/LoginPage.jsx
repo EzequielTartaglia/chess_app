@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import Image from 'next/image'
+import NotificationComponent from '../../../utils/web-push/NotificationComponent';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [showNotification, setShowNotification] = useState(false);
 
     const router = useRouter();
 
@@ -28,6 +30,7 @@ export default function LoginPage() {
             const { access, refresh } = response;
             localStorage.setItem('accessToken', access);
             localStorage.setItem('refreshToken', refresh);
+            setShowNotification(true);
             router.push('/tournaments');
         }else {
             setError(response.detail || 'Error al iniciar sesión.');
@@ -51,6 +54,14 @@ export default function LoginPage() {
                     </p>
                 )}
 
+                {showNotification && (
+                    <NotificationComponent
+                        title="Inicio de sesión exitoso"
+                        message="Aquí podrás ver los torneos en vigencia y más información importante."
+                        icon="/standard.svg"
+                    />
+                )}
+
                 <form onSubmit={handleSubmit}>
                     <label>
                         Email
@@ -69,7 +80,7 @@ export default function LoginPage() {
                         <Link href={'/terms'}>Términos y condic</Link>
                     </div>
                 </form>
-
+ 
                 <div className='options'>
                     <span>No tienes cuenta? <Link href={'register/'}>Registrate</Link></span>
                 </div>

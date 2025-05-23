@@ -1,4 +1,4 @@
-import TournamentDetailPage from "@/Views/Tournaments/Details/TournamentDetailsPage";
+import TournamentDetailPage from "@/views/Tournaments/Details/TournamentDetailsPage";
 
 export default function tournamentDetails({params}) {
   return (

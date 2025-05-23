@@ -1,4 +1,4 @@
-import LoginPage from "@/Views/Login/LoginPage";
+import LoginPage from "@/views/Login/LoginPage";
 
 export default function login() {
   return <LoginPage />;
