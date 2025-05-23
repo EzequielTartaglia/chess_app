@@ -6,6 +6,7 @@ import Image from "next/image";
 import { fetchWithAuth } from "../../../utils/api";
 
 import Navbar from "@/components/navbar";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function TournamentsPage() {
   const router = useRouter();
