@@ -48,8 +48,8 @@ export default function Navbar({showBack}) {
                     <Image src={'/anuncios.svg'} alt='Anuncio' width={40} height={40} title='Anuncio'/>
                 </button>
 
-                <button className='loguotBtn' onClick={handleLogout} title='Cerrar sesión'>
-                    <Image src={'/power-off.svg'} alt='Cerrar sesión' width={30} height={30}/>
+                <button className='loguotBtn px-1' onClick={handleLogout} title='Cerrar sesión'>
+                    <Image src={'/power-off.svg'} alt='Cerrar sesión' width={35} height={35}/>
                 </button>
             </div>
             

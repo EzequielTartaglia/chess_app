@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <div className="relative w-[1920px] h-[1080px] bg-primary overflow-hidden">
       {/* Rombos decorativos */}
-      <div className="absolute w-[621.82px] h-[622.53px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]" />
+      <div className="absolute w-[650px] h-[650px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]" />
       <div className="absolute w-[194px] h-[194px] left-[860.18px] top-[15%] bg-primary rounded-[38px] rotate-45" />
 
       {/* Título */}
