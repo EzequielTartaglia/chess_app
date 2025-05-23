@@ -1,4 +1,4 @@
-import RegisterPage from "@/src/views/Home/Register/RegisterPage";
+import RegisterPage from "@/src/views/Register/RegisterPage";
 
 export default function register() {
   return <RegisterPage />;
