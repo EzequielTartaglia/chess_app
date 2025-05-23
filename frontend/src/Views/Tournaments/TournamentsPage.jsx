@@ -59,8 +59,9 @@ export default function TournamentsPage() {
   function tournamentRow(tournament) {
     const iso = `${tournament.start_date}T${tournament.start_time}`;
     const date = new Date(iso);
-    const dateStr = date.toLocaleDateString("sv").replace(/-/g, "/");
-    const timeStr = date.toLocaleTimeString("en-US", {
+    const dateStr = date.toLocaleDateString("es-AR").replace(/-/g, "/");
+
+    const timeStr = date.toLocaleTimeString("es-AR", {
       hour: "numeric",
       minute: "2-digit",
       hour12: true,
@@ -69,12 +70,12 @@ export default function TournamentsPage() {
       tournament.mode.charAt(0).toUpperCase() + tournament.mode.slice(1);
     const modeImage =
       tournament.mode === "bullet" ? "/bullet.svg" : "/standard.svg";
-    const state =
+    /* const state =
       tournament.state === "pending"
         ? "Pendiente"
         : tournament.state === "in_progress"
         ? "En curso"
-        : "Finalizado";
+        : "Finalizado"; */
 
     return (
       <>
@@ -85,8 +86,8 @@ export default function TournamentsPage() {
         <td style={{ textAlign: "left" }}>
           <Image src={modeImage} alt="" width={20} height={20} /> {mode}
         </td>
-        <td>{tournament.prize} PTS</td>
-        <td>{state}</td>
+        <td>{tournament.prize} Pts.</td>
+        {/* <td>{state}</td> */}
       </>
     );
   }
@@ -135,7 +136,7 @@ export default function TournamentsPage() {
                     <th>Fecha de inicio</th>
                     <th style={{ textAlign: "left" }}>Modo</th>
                     <th>Premio</th>
-                    <th>Estado</th>
+                    {/* <th>Estado</th> */}
                   </tr>
                 ) : (
                   <tr>
