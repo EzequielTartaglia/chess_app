@@ -145,7 +145,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    os.environ.get("NEXT_FRONT_END_BASE_URL"),
 ]
 
 CORS_ALLOW_CREDENTIALS = True

@@ -1,215 +1,207 @@
 ## Chess Tournament Manager
 
-Una aplicación full-stack para crear y gestionar torneos de ajedrez.  
-Backend en Django + Django REST Framework; frontend en Next.js. Usa PostgreSQL como base de datos y JWT para la autenticación.
+A full-stack application designed for creating and managing chess tournaments. The backend is built with Django and Django REST Framework, while the frontend utilizes Next.js. PostgreSQL serves as the database, and JWT is employed for authentication.
 
 ---
 
-## Tabla de Contenidos
+## Table of Contents
 
-1. [Características](#características)  
-2. [Tecnologías](#tecnologías)  
-3. [Primeros Pasos](#primeros-pasos)  
-   - [Requisitos Previos](#requisitos-previos)  
-   - [Configuración del Backend](#configuración-del-backend)  
-   - [Configuración del Frontend](#configuración-del-frontend)  
-4. [Variables de Entorno](#variables-de-entorno)  
-5. [Endpoints de la API](#endpoints-de-la-api)  
-6. [Estructura del Proyecto](#estructura-del-proyecto)  
-7. [Uso](#uso)  
-8. [Protótipo / Capturas](#protótipo--capturas)  
-9. [Licencia](#licencia)  
-
----
-
-## Características
-
-- **Página principal**  
-  - Lista torneos pendientes o en curso  
-  - Filtro por estado: pendiente, en curso, finalizado  
-
-- **Detalle de torneo**  
-  - Muestra nombre, descripción, fecha/hora, modo y premio   
-
-- **Gestión de torneos**  
-  - Crear nuevos torneos  
-  - Editar y eliminar torneos existentes  
-
-- **Autenticación**  
-  - Registro e inicio de sesión con JWT  
-  - Rutas protegidas  
+1.  [Features](#features)
+2.  [Technologies](#technologies)
+3.  [Getting Started](#getting-started)
+  *   [Prerequisites](#prerequisites)
+  *   [Backend Setup](#backend-setup)
+  *   [Frontend Setup](#frontend-setup)
+4.  [Environment Variables](#environment-variables)
+5.  [API Endpoints](#api-endpoints)
+6.  [Project Structure](#project-structure)
+7.  [Usage](#usage)
+8.  [Prototype / Screenshots](#prototype--screenshots)
+9.  [License](#license)
 
 ---
 
-## Tecnologías
+## Features
 
-- **Backend**  
-  - Python 3.x, Django 5.x, Django REST Framework  
-  - JWT (djangorestframework-simplejwt)  
-  - PostgreSQL  
-
-- **Frontend**  
-  - Next.js 13 (App Router) 
-  - CSS
-
-- **Herramientas**  
-  - `psycopg2` para PostgreSQL  
-  - `django-filter` para filtros en la API  
-  - `django-cors-headers` para CORS  
+*   **Homepage**
+  *   Displays a list of upcoming or ongoing tournaments.
+  *   Allows filtering by status: pending, ongoing, completed.
+*   **Tournament Details**
+  *   Shows tournament name, description, date/time, mode, and prize.
+*   **Tournament Management**
+  *   Enables the creation of new tournaments.
+  *   Allows editing and deletion of existing tournaments.
+*   **Authentication**
+  *   Provides user registration and login with JWT.
+  *   Secures routes with authentication.
 
 ---
 
-## Primeros Pasos
+## Technologies
 
-### Requisitos Previos
+*   **Backend**
+  *   Python 3.x, Django 5.x, Django REST Framework
+  *   JWT (djangorestframework-simplejwt)
+  *   PostgreSQL
+*   **Frontend**
+  *   Next.js 13 (App Router)
+  *   CSS
+*   **Tools**
+  *   `psycopg2` for PostgreSQL
+  *   `django-filter` for API filtering
+  *   `django-cors-headers` for CORS
 
-- [Node.js ≥ 16](https://nodejs.org/)  
-- [Python ≥ 3.10](https://www.python.org/)  
-- PostgreSQL  
+---
 
-### Pasos para comenzar
-- Creamos una carpeta para colocar el proyecto
-- dentro de esta carpeta vamos a crear un entorno virtual para Django
-    ```
-    python -m venv .venv
-    source .venv/bin/activate   # macOS/Linux
-    .venv\Scripts\activate      # Windows 
+## Getting Started
 
-    ```
+### Prerequisites
 
-### Configuración del Backend
+*   [Node.js ≥ 16](https://nodejs.org/)
+*   [Python ≥ 3.10](https://www.python.org/)
+*   PostgreSQL
 
-1. Clona el repositorio y entra a la carpeta `backend`:
+### Initial Steps
+
+*   Create a directory to house the project.
+*   Within this directory, set up a virtual environment for Django.
+
+  ```bash
+  python -m venv .venv
    ```
-   git clone <URL-del-repo>
-   cd challenge-ajedrez
-   cd backend
-   ```
+  
+  ```bash
+  source .venv/bin/activate   # macOS/Linux
+  .venv\Scripts\activate      # Windows
+  ```
 
-2. instalamos las dependencias:
-    ```
-    pip install -r requirements.txt
-    ```
+### Backend Setup
 
-3. Crea un archivo .env junto a manage.py:
-    ```
-    DB_DATABASE=chess_challenge
-    DB_USER=postgres
-    DB_PASSWORD=postgres
-    DB_PORT=5432
-    DB_HOST=localhost
+1.  Clone the repository and navigate to the `backend` directory:
 
-    DEBUG=True
-    SECRET_KEY='tu_secreto_django'
-    ALLOWED_HOSTS = '*'
-    ```
+  ```bash
+  git clone <URL-del-repo>
+  cd challenge-ajedrez
+  cd backend
+  ```
+2.  Install the required dependencies:
 
-4. Ejecuta migraciones y crea superusuario:
-    ```
-    python manage.py migrate
-    python manage.py createsuperuser
-    ```
+  ```bash
+  pip install -r requirements.txt
+  ```
+3.  Create a `.env` file alongside `manage.py` with the following content:
 
-5. Inicia el servidor:
-    ```
-    python manage.py runserver
+  ```
+  DB_DATABASE=chess_challenge
+  DB_USER=postgres
+  DB_PASSWORD=postgres
+  DB_PORT=5432
+  DB_HOST=localhost
 
-    ```
-    La API quedará en http://127.0.0.1:8000/ (aca puede variar el puerto)
+  DEBUG=True
+  SECRET_KEY='tu_secreto_django'
+  ALLOWED_HOSTS = '*'
+  ```
+4.  Run migrations and create a superuser:
 
+  ```bash
+  python manage.py migrate
+  python manage.py createsuperuser
+  ```
+5.  Start the development server:
 
-### Configuración del Frontend
+  ```bash
+  python manage.py runserver
+  ```
 
-1. En otro terminal, ve a la carpeta `frontend`:
-   ```
-   cd frontend
-   ```
+  The API will be accessible at `http://127.0.0.1:8000/` (port may vary).
 
-2. instalamos las dependencias:
-    ```
-    npm install
-    # o
-    yarn
-    ```
+### Frontend Setup
 
-3. Crea un archivo .env en la raíz del frontend:
-    ```
-    NEXT_PUBLIC_API_URL=<url del backend, ej.: http://127.0.0.1:8000 >
-    ```
+1.  In a separate terminal, navigate to the `frontend` directory:
 
-4. Ejecuta el servidor de desarrollo:
-    ```
-    npm run dev
-    # o
-    yarn dev
-    ```
-    La app estará en http://localhost:3000/.
+  ```bash
+  cd frontend
+  ```
+2.  Install the dependencies:
 
+  ```bash
+  npm install
+  # or
+  yarn
+  ```
+3.  Create a `.env` file in the frontend root directory:
 
-### Endpoints de la API
+  ```
+  DJANGO_PUBLIC_API_URL=<backend URL, e.g., http://127.0.0.1:8000>
+  ```
+4.  Run the development server:
 
-|Método |	Ruta |	Descripción
-| ---   |   --- |   ---|
-|POST	| /api/register/	| Registro de usuario
-|POST	| /api/login/	| Obtención de tokens JWT
-|POST	| /api/token/refresh/	| Refrescar token accesible
-|POST	| /api/token/blacklist/	| Inhabilitar token de refresco
-|GET	| /api/tournaments/	| Listar y filtrar torneos
-|POST	| /api/tournaments/	| Crear torneo
-|GET	| /api/tournaments/{id}/	| Ver detalle de un torneo
-|PUT	| /api/tournaments/{id}/	| Actualizar torneo
-|DELETE	| /api/tournaments/{id}/	| Eliminar torneo
+  ```bash
+  npm run dev
+  # or
+  yarn dev
+  ```
 
+  The app will be available at `http://localhost:3000/`.
 
+### API Endpoints
 
-### Estructura del Proyecto
+| Method | Route                   | Description                     |
+| :----- | :---------------------- | :------------------------------ |
+| POST   | /api/register/          | User registration               |
+| POST   | /api/login/             | JWT token retrieval             |
+| POST   | /api/token/refresh/     | Access token refresh            |
+| POST   | /api/token/blacklist/   | Refresh token invalidation      |
+| GET    | /api/tournaments/       | List and filter tournaments    |
+| POST   | /api/tournaments/       | Create a tournament             |
+| GET    | /api/tournaments/{id}/  | Get tournament details          |
+| PUT    | /api/tournaments/{id}/  | Update a tournament             |
+| DELETE | /api/tournaments/{id}/ | Delete a tournament             |
+
+### Project Structure
+
 ```
-├── api/               # Django app
+├── api/                   # Django app
 │   ├── models.py
 │   ├── serializers.py
 │   ├── views.py
 │   └── urls.py
-├── backend/           # Proyecto Django
+├── backend/               # Django project
 │   ├── settings.py
 │   └── urls.py
 |
 └── frontend/
-|    ├── src
-|    |  └── app/               # Next.js App Router
-|    |      ├── layout.js
-|    |      ├── page.js        # Landing Page
-|    |      |── tournaments/
-|    |      |    ├── page.js    # Listado y filtro
-|    |      |    └── [id]/page.js # Detalle de torneo
-|    |      |
-|    |      |── login/
-|    |      |── register/
-|    |      |── components/        # Componentes React
-|    |      |
-|    |      └── middleware.js
-|    |        
-|    ├── utils/             # Helpers (p. ej. fetchWithAuth)
-|    ├── public/            # Archivos estáticos e imágenes
-|    ├── .env               # crear este archivo
-|    └── package.json
+|   ├── src
+|   |   └── app/           # Next.js App Router
+|   |       ├── layout.js
+|   |       ├── page.js    # Landing Page
+|   |       |── tournaments/
+|   |       |   ├── page.js# Tournament listing and filtering
+|   |       |   └── [id]/page.js# Tournament details
+|   |       |
+|   |       |── login/
+|   |       |── register/
+|   |       |── components/    # React components
+|   |       |
+|   |       └── middleware.js
+|   |
+|   ├── utils/             # Helpers (e.g., fetchWithAuth)
+|   ├── public/            # Static files and images
+|   ├── .env               # Create this file
+|   └── package.json
 |
 |
 ├── manage.py
 ├── requirements.txt
-└── .env        # crear este archivo
-
+└── .env                   # Create this file
 ```
 
-### Uso
+### Usage
 
-Regístrate o inicia sesión.
-
-Explora la página principal (/) para ver torneos activos.
-
-Filtra por estado (pendientes, en curso).
-
-Haz clic en un torneo para ver detalle e inscribirte.
-
-Crea nuevos torneos desde la vista “Crear”.
-
-Cierra sesión desde la navbar.
+1.  Register or log in to your account.
+2.  Explore the homepage (`/`) to view active tournaments.
+3.  Filter tournaments by status (pending, ongoing).
+4.  Click on a tournament to view details and register.
+5.  Create new tournaments from the "Create" view.
+6.  Log out via the navbar.
