@@ -101,6 +101,8 @@ A full-stack application designed for creating and managing chess tournaments. T
   DEBUG=True
   SECRET_KEY='tu_secreto_django'
   ALLOWED_HOSTS = '*'
+
+  NEXT_FRONT_END_BASE_URL=http://localhost:3000
   ```
 4.  Run migrations and create a superuser:
 

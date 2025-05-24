@@ -126,6 +126,7 @@ Backend in Django + Django REST Framework; frontend in Next.js. Uses PostgreSQL 
 
 2. Install dependencies:
    ```
+   cd ..
    pip install -r requirements.txt
    ```
 
