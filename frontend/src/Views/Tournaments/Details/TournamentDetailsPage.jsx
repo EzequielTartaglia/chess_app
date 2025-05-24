@@ -27,7 +27,7 @@ export default async function TournamentDetailPage({ tournamentId }) {
 
   // Formateo de fecha y hora
   const iso = `${tournament.start_date}T${tournament.start_time}`;
-  const dt = new Date(iso);
+  const date = new Date(iso);
   const dateStr = date.toLocaleDateString("es-AR").replace(/-/g, "/");
   const timeStr = date.toLocaleTimeString("es-AR", {
     hour: "numeric",
