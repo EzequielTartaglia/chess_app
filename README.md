@@ -135,7 +135,11 @@ A full-stack application designed for creating and managing chess tournaments. T
 3.  Create a `.env` file in the frontend root directory:
 
   ```
-  DJANGO_PUBLIC_API_URL=<backend URL, e.g., http://127.0.0.1:8000>
+   NEXT_PUBLIC_DJANGO_URL=http://localhost:8000
+
+  # PWA
+  NEXT_PUBLIC_VAPID_PUBLIC_KEY="BBVVwBKwKJVk-O0Nu4URz82PQfKFXqksYNUliRLmGzYBR3IT-DJpgq8GAqis49mP9LQ7w4VblISdmd-F-Awu-2w"
+  VAPID_PRIVATE_KEY="isppebtIiZZk_dqjoxP19OS7HgWuQ-O331_Ny0cGgjU"
   ```
 4.  Run the development server:
 
