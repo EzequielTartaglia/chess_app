@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 import Image from "next/image";
+import CompanyLogo from "@/components/CompanyLogo";
 
 export default function RegisterPage() {
   const [fname, setFname] = useState("");
