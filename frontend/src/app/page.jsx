@@ -2,19 +2,19 @@ import Button from "@/components/Button";
 
 export default function HomePage() {
   return (
-    <div className="relative w-[1920px] h-[1080px] bg-primary overflow-hidden">
+    <div className="relative w-screen h-screen bg-primary overflow-hidden">
       {/* Rombos decorativos */}
-      <div className="absolute w-[650px] h-[650px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]" />
-      <div className="absolute w-[194px] h-[194px] left-[860.18px] top-[15%] bg-primary rounded-[38px] rotate-45" />
+      <div className="absolute w-[600px] h-[600px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]" />
+      <div className="absolute w-[180px] h-[180px] left-[870px] top-[10%] bg-primary rounded-[38px] rotate-45" />
 
       {/* Título */}
       <div
         className="
           absolute 
           left-1/2 -translate-x-1/2 top-[37%] 
-          w-[268px] h-[114px] 
-          font-['Agency_FB'] font-bold 
-          text-[61px] leading-[50px] 
+          w-[300px] h-[114px] 
+          font-bold 
+          text-[59px] leading-[50px] 
           text-secondary
           flex items-center justify-center
           "
@@ -25,13 +25,13 @@ export default function HomePage() {
       {/* Descripción */}
       <p
         className="
-          absolute 
-          w-[266px] h-[120.85px] 
-          left-1/2 -translate-x-1/2 top-[48%] 
-          font-['Agency_FB'] font-bold 
+          absolute
+          w-[300px] h-[120.85px] 
+          left-1/2 -translate-x-1/2 top-[50%] 
+          font-bold 
           text-[10px] leading-[12px] 
           text-justify 
-         text-secondary"
+          text-secondary"
       >
         A new way to play the consecrated game of chess. A decentralized
         platform for everyone who wants to earn money playing the most beloved
@@ -50,21 +50,22 @@ export default function HomePage() {
           absolute 
           w-[300px]
           h-[275px] 
-          left-1/2 -translate-x-1/2 top-[60%] 
+          left-1/2 -translate-x-1/2 top-[63%] 
           flex flex-col 
           items-center 
           gap-2
           "
       >
         {/* Botones principales verticales */}
-        <Button text="LOGIN" route={"/login"} />
-        <Button text="REGISTER" route={"/register"} />
+        
+        <Button customClasses= "font-bold text-[34px] h-[40px]" text="LOGIN" route={"/login"} />
+        <Button customClasses= "font-bold text-[30px] h-[40px]" text="REGISTER" route={"/register"} />
 
         {/* Botones secundarios en fila */}
         <div className="flex justify-between mt-0 gap-2">
           <Button
-            customClasses="w-[95px] h-[32px]
-              font-['Agency_FB'] font-bold text-[9px] 
+            customClasses="w-[94.8px] h-[25px]
+              font-bold text-[9px] 
               leading-[3px] 
               text-primary 
               bg-primary 
@@ -75,8 +76,8 @@ export default function HomePage() {
             route={"/tems"}
           />
           <Button
-            customClasses="w-[95px] h-[32px]
-              font-['Agency_FB'] font-bold text-[9px] 
+            customClasses="w-[94.8px] h-[25px]
+              font-bold text-[9px] 
               leading-[3px] 
               text-primary
               bg-primary 
@@ -87,8 +88,8 @@ export default function HomePage() {
             route={"/user_manual"}
           />
           <Button
-            customClasses="w-[90px] h-[30.69px] 
-              font-['Agency_FB'] font-bold text-[19px] 
+            customClasses="w-[94.8px] h-[25px]
+              font-bold text-[15px] 
               leading-[3px]
               bg-primary   
               text-primary 

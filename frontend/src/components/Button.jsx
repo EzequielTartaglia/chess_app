@@ -30,7 +30,6 @@ export default function Button({
       <button
         className={`
         w-[300px] h-[52px]
-        font-['Agency_FB'] font-bold text-[34px] 
         bg-[#101010] 
         text-[#F5E2A0]
         flex items-center justify-center
