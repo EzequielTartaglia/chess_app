@@ -39,7 +39,7 @@ export default function Navbar({showBack}) {
             
             <div className="actions">
                 <button>
-                    <Image src={'/bug.svg'} alt='Bug' width={40} height={40} title='Reportar un bug'/>
+                    <Image src={'/info.svg'} alt='Info' width={40} height={40} title='Info'/>
                 </button>
                 <button>
                     <Image src={'/config.svg'} alt='Config' width={40} height={40} title='Config'/>
