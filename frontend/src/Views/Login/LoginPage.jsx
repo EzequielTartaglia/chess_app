@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import NotificationComponent from "../../../utils/web-push/NotificationComponent";
+import CompanyLogo from "@/components/CompanyLogo";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -41,7 +42,7 @@ export default function LoginPage() {
     <div className="h-100vh flex justify-center items-center login_page">
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-[650px] p-5">
         <section className="hero text-center relative">
-          <h2 className="text-2rem mb-10">LOGO EMPRESA</h2>
+          <CompanyLogo text="LOGO EMPRESA" />
           <Link
             className="closeBtn absolute top-0 right-0 p-1 cursor-pointer"
             href={"/"}

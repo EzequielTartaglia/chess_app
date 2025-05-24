@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
+import CompanyLogo from "./CompanyLogo";
 
 export default function Navbar({ showBack }) {
   const router = useRouter();
@@ -40,7 +41,7 @@ export default function Navbar({ showBack }) {
 
       {/* Logo */}
       <Link href="/">
-        <span>LOGO EMPRESA</span>
+        <CompanyLogo />
       </Link>
 
       <div className="actions">

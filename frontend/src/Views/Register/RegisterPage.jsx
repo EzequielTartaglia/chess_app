@@ -47,7 +47,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex justify-center p-4 overflow-auto md:items-center register_page">
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[650px] p-5">
         <section className="hero text-center relative">
-          <h2 className="text-2xl mb-10">LOGO EMPRESA</h2>
+          <CompanyLogo text="LOGO EMPRESA" />
           <Link
             className="closeBtn absolute top-0 right-0 p-1 cursor-pointer"
             href={"/"}
