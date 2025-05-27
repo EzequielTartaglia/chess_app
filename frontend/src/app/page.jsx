@@ -4,8 +4,9 @@ export default function HomePage() {
   return (
     <div className="relative w-screen h-screen bg-primary overflow-hidden">
       {/* Rombos decorativos */}
-      <div className="absolute w-[600px] h-[600px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]" />
-      <div className="absolute w-[180px] h-[180px] left-[870px] top-[10%] bg-primary rounded-[38px] rotate-45" />
+      <div className="absolute w-[600px] h-[600px] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-[#F5E2A0] rotate-[135deg]">
+        <div className="absolute w-[168px] h-[168px] left-[2%] top-[70%] bg-primary rounded-[38px]" />
+      </div>
 
       {/* Título */}
       <div
@@ -57,9 +58,9 @@ export default function HomePage() {
           "
       >
         {/* Botones principales verticales */}
-        
-        <Button customClasses= "font-bold text-[34px] h-[40px]" text="LOGIN" route={"/login"} />
-        <Button customClasses= "font-bold text-[30px] h-[40px]" text="REGISTER" route={"/register"} />
+
+        <Button customClasses="font-bold text-[34px] h-[40px]" text="LOGIN" route={"/login"} />
+        <Button customClasses="font-bold text-[30px] h-[40px]" text="REGISTER" route={"/register"} />
 
         {/* Botones secundarios en fila */}
         <div className="flex justify-between mt-0 gap-2">
