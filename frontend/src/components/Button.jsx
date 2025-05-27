@@ -29,7 +29,7 @@ export default function Button({
     return (
       <button
         className={`
-        w-[300px] h-[52px]
+        w-[300px]
         bg-[#101010] 
         text-[#F5E2A0]
         flex items-center justify-center
