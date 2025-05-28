@@ -24,6 +24,7 @@ const Footer = ({
           <button
             onClick={() => router.push("/spectate")}
             className={iconClass}
+            title="Spectate"
           >
             <Image
               src="/spectate.svg"
@@ -37,6 +38,7 @@ const Footer = ({
           <button
             onClick={() => router.push("/rankings")}
             className={iconClass}
+            title="Rankings"
           >
             <Image
               src="/custom_tournament.svg"
@@ -54,6 +56,7 @@ const Footer = ({
           <button
             onClick={() => router.push("/marketplace")}
             className={iconClass}
+            title="Marketplace"
           >
             <Image
               src="/marketplace.svg"
@@ -64,12 +67,12 @@ const Footer = ({
           </button>
         )}
         {showZettsIcon && (
-          <button onClick={() => router.push("/zetts")} className={iconClass}>
+          <button onClick={() => router.push("/zetts")} className={iconClass} title="Zetts">
             <Image src="/zetts.svg" alt="Zetts Icon" width={100} height={100} />
           </button>
         )}
         {showShopIcon && (
-          <button onClick={() => router.push("/shop")} className={iconClass}>
+          <button onClick={() => router.push("/shop")} className={iconClass} title="Shop">
             <Image src="/shop.svg" alt="Shop Icon" width={100} height={100} />
           </button>
         )}
