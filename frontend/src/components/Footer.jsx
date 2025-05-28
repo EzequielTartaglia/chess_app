@@ -109,9 +109,12 @@ const Footer = ({
       </div>
 
       {text && (
-        <p className="text-[80px] sm:text-[110px] font-bold uppercase ml-2 sm:ml-4">
-          {text}
-        </p>
+        <div className="flex flex-col items-center min-h-[140px]">
+          <p className="text-[80px] sm:text-[110px] font-bold uppercase ml-2 sm:ml-4">
+            {text}
+          </p>
+          <span className="text-lg mt-2 invisible">.</span>
+        </div>
       )}
     </footer>
   );
