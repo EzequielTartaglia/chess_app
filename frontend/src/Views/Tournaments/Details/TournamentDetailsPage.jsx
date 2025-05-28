@@ -21,6 +21,21 @@ export default async function TournamentDetailPage({ tournamentId }) {
       cache: "no-store",
     }
   );
+  // Fetch points del usuario actual
+  const res = await fetch(`${apiUrl}/api/users/me/points/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    cache: "no-store",
+  });
+
+  let currentUserTotalPoints = 0;
+  if (res.ok) {
+    const data = await res.json();
+    currentUserTotalPoints = data.total_points;
+  } else {
+    currentUserTotalPoints = 0;
+  }
 
   if (resTournament.status === 404) {
     notFound();
@@ -129,6 +144,8 @@ export default async function TournamentDetailPage({ tournamentId }) {
         showZettsIcon={true}
         showShopIcon={true}
         text=""
+        user={!!token}
+        userZetts={Number.parseInt(currentUserTotalPoints, 10) || 0}
       />
     </>
   );

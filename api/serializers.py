@@ -69,7 +69,7 @@ class TournamentSerializer(serializers.ModelSerializer):
 class UserSimpleSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'user_name', 'email']
+        fields = ['id', 'first_name', 'last_name', 'user_name', 'email', 'elo', 'total_points']
 
 class TournamentParticipantDetailSerializer(serializers.ModelSerializer):
     user = UserSimpleSerializer(read_only=True)

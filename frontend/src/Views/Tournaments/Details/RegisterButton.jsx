@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+import parseJwt from "@/helpers/parseJwt";
 import React, { useEffect, useState } from "react";
 
 export default function RegisterButton({ tournamentId, token }) {
@@ -98,21 +98,4 @@ export default function RegisterButton({ tournamentId, token }) {
         : "Inscribirse"}{" "}
     </button>
   );
-}
-
-// Helper para decodificar el token JWT
-function parseJwt(token) {
-  try {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split("")
-        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-        .join("")
-    );
-    return JSON.parse(jsonPayload);
-  } catch (e) {
-    return { email: null };
-  }
 }

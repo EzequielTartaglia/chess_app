@@ -9,6 +9,9 @@ const Footer = ({
   showMarketplaceIcon = true,
   showZettsIcon = true,
   showShopIcon = true,
+  hasUser = false,
+  user = null,
+  userZetts = 0,
   text = "",
 }) => {
   const router = useRouter();
@@ -90,7 +93,9 @@ const Footer = ({
                 height={100}
               />
             </button>
-            <span className="text-lg mt-2">1320 z</span>
+            <span className="text-lg mt-2">
+             {userZetts} <strong className="text-lg bold mt-2">Z</strong>
+            </span>
           </div>
         )}
 
