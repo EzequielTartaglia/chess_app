@@ -103,7 +103,7 @@ export default async function TournamentDetailPage({ tournamentId }) {
         {/* Listado de participantes */}
         <section className="mt-8">
           <h2 className="text-xl font-semibold mb-4">
-            Participantes Inscritos
+            Participantes
           </h2>
           {participants.length === 0 ? (
             <p>No hay participantes inscritos aún.</p>

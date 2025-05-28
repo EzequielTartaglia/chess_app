@@ -241,7 +241,7 @@ body {
     /* padding-bottom: 280px; */
 
     .tournaments__table {
-      width: 100%;
+      width: 90%;
       border-collapse: "collapse";
       color: var(--background-yellow);
       padding: 20px 40px;
