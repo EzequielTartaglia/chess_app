@@ -28,7 +28,6 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255, blank=False)
     last_name = models.CharField(max_length=255, blank=False)
@@ -55,13 +54,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     groups = models.ManyToManyField(
         Group,
-        related_name='custom_user_group_set',  # Cambia esto a un nombre único
+        related_name='custom_user_group_set',  
         blank=True,
     )
 
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='custom_user_permissions_group_set',  # Cambia esto a un nombre único
+        related_name='custom_user_permissions_group_set',  
         blank=True,
     )
 
@@ -95,3 +94,17 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.name
+
+class TournamentParticipant(models.Model):
+    
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='tournament_participations')
+    tournament = models.ForeignKey('Tournament', on_delete=models.CASCADE, related_name='participants')
+    registered_at = models.DateTimeField(auto_now_add=True)
+    score = models.IntegerField(default=0)  
+    is_winner = models.BooleanField(default=False)  
+
+    class Meta:
+        unique_together = ('user', 'tournament')  
+
+    def __str__(self):
+        return f"{self.user.email} en {self.tournament.name}"
