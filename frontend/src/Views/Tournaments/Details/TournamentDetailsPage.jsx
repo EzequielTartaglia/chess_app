@@ -11,13 +11,16 @@ export default async function TournamentDetailPage({ tournamentId }) {
   const apiUrl = process.env.NEXT_PUBLIC_DJANGO_URL;
 
   // Fetch torneo
-  const resTournament = await fetch(`${apiUrl}/api/tournaments/${tournamentId}/`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
-    },
-    cache: "no-store",
-  });
+  const resTournament = await fetch(
+    `${apiUrl}/api/tournaments/${tournamentId}/`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+      cache: "no-store",
+    }
+  );
 
   if (resTournament.status === 404) {
     notFound();
@@ -99,15 +102,18 @@ export default async function TournamentDetailPage({ tournamentId }) {
 
         {/* Listado de participantes */}
         <section className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Participantes Inscritos</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Participantes Inscritos
+          </h2>
           {participants.length === 0 ? (
             <p>No hay participantes inscritos aún.</p>
           ) : (
             <ul>
               {participants.map((participant) => (
                 <li key={participant.id} className="mb-2">
-                  {/* Asumiendo que participant tiene un campo 'user' con 'username' o 'full_name' */}
-                  {participant.user?.email || participant.user?.username || "Usuario sin nombre"}
+                  {participant.user?.first_name && participant.user?.last_name
+                    ? `${participant.user.first_name} ${participant.user.last_name}`
+                    : "Usuario sin nombre"}
                 </li>
               ))}
             </ul>
@@ -116,7 +122,12 @@ export default async function TournamentDetailPage({ tournamentId }) {
       </div>
 
       <footer>
-        <Image src={"/tournament.svg"} alt="tournament" width={80} height={80} />
+        <Image
+          src={"/tournament.svg"}
+          alt="tournament"
+          width={80}
+          height={80}
+        />
       </footer>
     </div>
   );

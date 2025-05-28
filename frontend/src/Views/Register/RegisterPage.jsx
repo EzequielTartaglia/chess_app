@@ -45,21 +45,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center p-4 overflow-auto md:items-center register_page">
-      <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[650px] p-5">
-        <section className="hero text-center relative">
+    <div className="min-h-screen flex justify-center overflow-auto md:items-center register_page">
+      <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[500px] p-5">
+        <section className="hero relative">
           <CompanyLogo text="LOGO EMPRESA" />
           <Link
-            className="closeBtn absolute top-0 right-0 p-1 cursor-pointer"
+            className="absolute top-0 right-0 cursor-pointer"
             href={"/"}
           >
-            <Image src={"/close.svg"} alt="close" width={30} height={30} />
+            <Image src={"/close.svg"} alt="close" width={50} height={50} />
           </Link>
         </section>
 
         <form
           onSubmit={handleSubmit}
-          className="text-center text-xl font-bold uppercase mb-7"
+          className="text-center text-xl font-bold uppercase"
         >
           <label className="block mb-2 w-full">
             Nombre
@@ -68,7 +68,7 @@ export default function RegisterPage() {
               value={fname}
               onChange={(e) => setFname(e.target.value)}
               required
-              className="w-full p-1.5 text-xl border-3 border-border-color bg-background text-background-yellow text-center focus-visible:outline-none"
+              className="w-full text-xl border-3 border-border-color bg-background text-background-yellow text-center focus-visible:outline-none"
             />
           </label>
 
@@ -127,9 +127,9 @@ export default function RegisterPage() {
             />
           </label>
 
-          <label className="termsLabel block mb-2 w-full">
+          <label className="termsLabel block w-full leading-none mt-3">
             <span>Leí y acepto los términos y condiciones</span>
-            <div className="checkContainer">
+            <div>
               <input
                 type="checkbox"
                 value={terms}
@@ -139,7 +139,7 @@ export default function RegisterPage() {
             </div>
           </label>
 
-          <div className="buttons flex flex-col md:flex-row justify-center items-center gap-2.5 h-auto mt-5">
+          <div className="buttons flex flex-col md:flex-row justify-center items-center gap-2.5 h-auto mt-4">
             <button
               type="submit"
               className="flex justify-center items-center gap-4 w-full h-12 bg-border-color text-background-yellow cursor-pointer uppercase font-bold border-none text-xl hover:bg-background transition-all duration-300 ease-in-out"
@@ -157,7 +157,7 @@ export default function RegisterPage() {
           </div>
         </form>
 
-        <div className="options text-center text-xl uppercase font-bold">
+        <div className="options text-center text-xl uppercase font-bold mb-2">
           <span>
             Ya tienes cuenta?{" "}
             <Link
@@ -165,6 +165,18 @@ export default function RegisterPage() {
               className="no-underline text-background-orange ml-5"
             >
               Iniciar sesion
+            </Link>
+          </span>
+        </div>
+
+        <div className="options text-center text-xl uppercase font-bold">
+          <span>
+            Olvidaste tu contraseña?{" "}
+            <Link
+              href={"login/"}
+              className="no-underline text-background-orange ml-5"
+            >
+              Reseteala
             </Link>
           </span>
         </div>

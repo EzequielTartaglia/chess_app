@@ -1,9 +1,53 @@
 "use client";
 
-import React, { useState } from "react";
+import Button from "@/components/Button";
+import React, { useEffect, useState } from "react";
 
 export default function RegisterButton({ tournamentId, token }) {
   const [loading, setLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    if (!token) return;
+
+    async function checkRegistration() {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_DJANGO_URL}/api/tournaments/${tournamentId}/participants/`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          console.error("Error al obtener participantes");
+          return;
+        }
+
+        const participants = await res.json();
+        if (!participants.length) return;
+
+        const currentUserEmail = parseJwt(token).email;
+        if (!currentUserEmail) {
+          console.error("No se pudo extraer el email del token.");
+          return;
+        }
+
+        const found = participants.some(
+          (p) => p.user?.email === currentUserEmail
+        );
+
+        setIsRegistered(found);
+      } catch (error) {
+        console.error("Error al verificar inscripción:", error);
+      }
+    }
+
+    checkRegistration();
+  }, [tournamentId, token]);
 
   async function handleRegister() {
     setLoading(true);
@@ -22,11 +66,11 @@ export default function RegisterButton({ tournamentId, token }) {
       if (!res.ok) {
         const errorData = await res.json();
         alert(errorData.detail || errorData.message || "No se pudo inscribir.");
-        setLoading(false);
         return;
       }
 
       alert("¡Te has inscrito correctamente al torneo!");
+      setIsRegistered(true);
     } catch (error) {
       console.error("Error al inscribirse:", error);
       alert("Ocurrió un error al intentar inscribirse.");
@@ -37,11 +81,38 @@ export default function RegisterButton({ tournamentId, token }) {
 
   return (
     <button
-      disabled={loading}
-      className="font-bold text-[34px] h-[40px] bg-green-600 text-white"
+      type="submit"
+      disabled={loading || isRegistered}
+      className={
+        isRegistered
+          ? "px-4 font-bold text-[34px] h-[60px] bg-gray-600 text-white opacity-50 cursor-not-allowed"
+          : "px-4 font-bold text-[34px] h-[60px] bg-green-600 text-white"
+      }
       onClick={handleRegister}
     >
-      {loading ? "Inscribiendo..." : "Inscribirse"}
+      {" "}
+      {isRegistered
+        ? "Ya estás inscrito"
+        : loading
+        ? "Inscribiendo..."
+        : "Inscribirse"}{" "}
     </button>
   );
+}
+
+// Helper para decodificar el token JWT
+function parseJwt(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    return { email: null };
+  }
 }
