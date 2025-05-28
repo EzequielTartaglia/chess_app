@@ -39,7 +39,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-100vh flex justify-center items-center login_page">
+    <div className="h-screen flex justify-center items-center login_page">
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-[650px] p-5">
         <section className="hero text-center relative">
           <CompanyLogo text="LOGO EMPRESA" />
