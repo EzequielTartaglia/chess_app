@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import RegisterButton from "./RegisterButton";
 import Footer from "@/components/Footer";
+import TournamentTable from "./TournamentTable";
 
 export default async function TournamentDetailPage({ tournamentId }) {
   const cookieStore = await cookies();
@@ -121,22 +122,11 @@ export default async function TournamentDetailPage({ tournamentId }) {
           {/* Listado de participantes */}
           <section className="mt-8">
             <h2 className="text-xl font-semibold mb-4">Participantes</h2>
-            {participants.length === 0 ? (
-              <p>No hay participantes inscritos aún.</p>
-            ) : (
-              <ul>
-                {participants.map((participant) => (
-                  <li key={participant.id} className="mb-2">
-                    {participant.user?.first_name && participant.user?.last_name
-                      ? `${participant.user.first_name} ${participant.user.last_name}`
-                      : "Usuario sin nombre"}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <TournamentTable participants={participants} />
           </section>
         </div>
       </div>
+
       <Footer
         showSpectIcon={true}
         showRankIcon={true}
