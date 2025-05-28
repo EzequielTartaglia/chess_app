@@ -45,7 +45,7 @@ export default function Navbar({ showBack }) {
       </Link>
 
       <div className="actions">
-        <button class="loguotBtn px-1">
+        <button className="loguotBtn px-1">
           <Image
             src={"/bug.svg"}
             alt="Bug"
@@ -54,7 +54,7 @@ export default function Navbar({ showBack }) {
             title="Reportar un bug"
           />
         </button>
-        <button class="loguotBtn px-1">
+        <button className="loguotBtn px-1">
           <Image
             src={"/info.svg"}
             alt="Info"
@@ -63,7 +63,7 @@ export default function Navbar({ showBack }) {
             title="Info"
           />
         </button>
-        <button class="loguotBtn px-1">
+        <button className="loguotBtn px-1">
           <Image
             src={"/config.svg"}
             alt="Config"
@@ -72,7 +72,7 @@ export default function Navbar({ showBack }) {
             title="Config"
           />
         </button>
-        <button class="loguotBtn px-1">
+        <button className="loguotBtn px-1">
           <Image
             src={"/anuncios.svg"}
             alt="Anuncio"
