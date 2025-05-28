@@ -7,6 +7,7 @@ import { fetchWithAuth } from "../../../utils/api";
 
 import Navbar from "@/components/Navbar";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import Footer from "@/components/Footer";
 
 export default function TournamentsPage() {
   const router = useRouter();
@@ -97,84 +98,86 @@ export default function TournamentsPage() {
   }
 
   return (
-    <div className="tournaments_page">
+    <>
       <Navbar />
-
-      {!loading && !error && (
-        <div className="tournaments__filter">
-          <label htmlFor="stateFilter">Filtrar por estado</label>
-          <select id="stateFilter" onChange={(e) => setFilter(e.target.value)}>
-            <option value="">Todos</option>
-            <option value="pending">Pendientes</option>
-            <option value="in_progress">En curso</option>
-            <option value="finish">Finalizados</option>
-          </select>
-        </div>
-      )}
-
-      <div className="tournaments">
-        {loading ? (
-          <div className="flex justify-center items-center py-10">
-            <LoadingSpinner />
-          </div>
-        ) : error ? (
-          <div className="tournaments__error">
-            <p>{error}</p>
-            <button onClick={loadTournaments}>Reintentar</button>
-          </div>
-        ) : (
-          <>
-            <table
-              className="tournaments__table"
-              cellSpacing="0"
-              cellPadding="0"
+      <div className="tournaments_page">
+        {!loading && !error && (
+          <div className="tournaments__filter">
+            <label htmlFor="stateFilter">Filtrar por estado</label>
+            <select
+              id="stateFilter"
+              onChange={(e) => setFilter(e.target.value)}
             >
-              <thead>
-                {filterTournaments.length > 0 ? (
-                  <tr>
-                    <th>Torneo</th>
-                    <th>Fecha de inicio</th>
-                    <th style={{ textAlign: "left" }}>Modo</th>
-                    <th>Premio</th>
-                    {/* <th>Estado</th> */}
-                  </tr>
-                ) : (
-                  <tr>
-                    <th colSpan={5}>No hay torneos disponibles.</th>
-                  </tr>
-                )}
-              </thead>
-              <tbody>
-                {filterTournaments
-                  .filter((t) => t.state !== "finish")
-                  .map((t) => (
-                    <tr
-                      key={t.id}
-                      className={`tournament__row row-${t.state}`}
-                      onClick={() => handleRowClick(t)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {tournamentRow(t)}
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-            <button onClick={() => router.push("/tournaments/create")}>
-              Crear
-            </button>
-          </>
+              <option value="">Todos</option>
+              <option value="pending">Pendientes</option>
+              <option value="in_progress">En curso</option>
+              <option value="finish">Finalizados</option>
+            </select>
+          </div>
         )}
-      </div>
 
-      <footer>
-        <Image
-          src={"/tournament.svg"}
-          alt="tournament"
-          width={80}
-          height={80}
-        />
-        <p>Torneos</p>
-      </footer>
-    </div>
+        <div className="tournaments">
+          {loading ? (
+            <div className="flex justify-center items-center py-10">
+              <LoadingSpinner />
+            </div>
+          ) : error ? (
+            <div className="tournaments__error">
+              <p>{error}</p>
+              <button onClick={loadTournaments}>Reintentar</button>
+            </div>
+          ) : (
+            <>
+              <table
+                className="tournaments__table"
+                cellSpacing="0"
+                cellPadding="0"
+              >
+                <thead>
+                  {filterTournaments.length > 0 ? (
+                    <tr>
+                      <th>Torneo</th>
+                      <th>Fecha de inicio</th>
+                      <th style={{ textAlign: "left" }}>Modo</th>
+                      <th>Premio</th>
+                      {/* <th>Estado</th> */}
+                    </tr>
+                  ) : (
+                    <tr>
+                      <th colSpan={5}>No hay torneos disponibles.</th>
+                    </tr>
+                  )}
+                </thead>
+                <tbody>
+                  {filterTournaments
+                    .filter((t) => t.state !== "finish")
+                    .map((t) => (
+                      <tr
+                        key={t.id}
+                        className={`tournament__row row-${t.state}`}
+                        onClick={() => handleRowClick(t)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {tournamentRow(t)}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <button onClick={() => router.push("/tournaments/create")}>
+                Crear
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      <Footer
+        showSpectIcon={false}
+        showRankIcon={true}
+        showMarketplaceIcon={false}
+        showZettsIcon={false}
+        showShopIcon={false}
+        text="TORNEOS"
+      />
+    </>
   );
 }

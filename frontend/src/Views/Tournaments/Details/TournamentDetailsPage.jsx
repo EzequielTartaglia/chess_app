@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import RegisterButton from "./RegisterButton";
+import Footer from "@/components/Footer";
 
 export default async function TournamentDetailPage({ tournamentId }) {
   const cookieStore = await cookies();
@@ -69,66 +69,67 @@ export default async function TournamentDetailPage({ tournamentId }) {
     }[tournament.state] || tournament.state;
 
   return (
-    <div className="tournament-detail_page">
+    <>
       <Navbar showBack={true} />
-      <div className="tournament-detail">
-        <h1>{tournament.name}</h1>
-        <p>
-          <strong>Descripción:</strong> {tournament.description}
-        </p>
-        <p>
-          <strong>Fecha y hora de inicio:</strong> {dateStr} {timeStr}
-        </p>
-        <p>
-          <strong>Modo:</strong> {tournament.mode}
-        </p>
-        <p>
-          <strong>Jugadores:</strong> {tournament.players}
-        </p>
-        <p>
-          <strong>Premio:</strong> {tournament.prize} PTS
-        </p>
-        <p>
-          <strong>Estado:</strong> {stateLabel}
-        </p>
+      <div className="tournament-detail_page">
+        <div className="tournament-detail">
+          <h1>{tournament.name}</h1>
+          <p>
+            <strong>Descripción:</strong> {tournament.description}
+          </p>
+          <p>
+            <strong>Fecha y hora de inicio:</strong> {dateStr} {timeStr}
+          </p>
+          <p>
+            <strong>Modo:</strong> {tournament.mode}
+          </p>
+          <p>
+            <strong>Jugadores:</strong> {tournament.players}
+          </p>
+          <p>
+            <strong>Premio:</strong> {tournament.prize} PTS
+          </p>
+          <p>
+            <strong>Estado:</strong> {stateLabel}
+          </p>
 
-        {tournament.state === "pending" && token && (
-          <RegisterButton tournamentId={tournament.id} token={token} />
-        )}
-
-        {tournament.state === "pending" && !token && (
-          <p className="text-red-600">Debes iniciar sesión para inscribirte.</p>
-        )}
-
-        {/* Listado de participantes */}
-        <section className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">
-            Participantes
-          </h2>
-          {participants.length === 0 ? (
-            <p>No hay participantes inscritos aún.</p>
-          ) : (
-            <ul>
-              {participants.map((participant) => (
-                <li key={participant.id} className="mb-2">
-                  {participant.user?.first_name && participant.user?.last_name
-                    ? `${participant.user.first_name} ${participant.user.last_name}`
-                    : "Usuario sin nombre"}
-                </li>
-              ))}
-            </ul>
+          {tournament.state === "pending" && token && (
+            <RegisterButton tournamentId={tournament.id} token={token} />
           )}
-        </section>
-      </div>
 
-      <footer>
-        <Image
-          src={"/tournament.svg"}
-          alt="tournament"
-          width={80}
-          height={80}
-        />
-      </footer>
-    </div>
+          {tournament.state === "pending" && !token && (
+            <p className="text-red-600">
+              Debes iniciar sesión para inscribirte.
+            </p>
+          )}
+
+          {/* Listado de participantes */}
+          <section className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Participantes</h2>
+            {participants.length === 0 ? (
+              <p>No hay participantes inscritos aún.</p>
+            ) : (
+              <ul>
+                {participants.map((participant) => (
+                  <li key={participant.id} className="mb-2">
+                    {participant.user?.first_name && participant.user?.last_name
+                      ? `${participant.user.first_name} ${participant.user.last_name}`
+                      : "Usuario sin nombre"}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        </div>
+      </div>
+      <Footer
+        showSpectIcon={true}
+        showRankIcon={true}
+        showMarketplaceIcon={true}
+        showZettsIcon={true}
+        showShopIcon={true}
+        text=""
+      />
+    </>
   );
 }

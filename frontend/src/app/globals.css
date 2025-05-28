@@ -9,6 +9,8 @@
   --background-orange-dark: #ff270f;
   --background-footer: #e03056;
 
+  --background-button: #202020;
+
   --border-radius: 50px;
   --border-color: #282828;
   --border-color-light: #282828a9;
@@ -342,28 +344,6 @@ body {
         outline: none;
       }
     }
-  }
-}
-
-.tournaments_page footer,
-.tournament-detail_page footer {
-  /* position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0; */
-  background-color: var(--background-footer);
-  color: var(--background-yellow);
-  padding: 30px 60px;
-  height: 160px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  p {
-    font-size: 5rem;
-    font-weight: bold;
-    text-transform: uppercase;
   }
 }
 
