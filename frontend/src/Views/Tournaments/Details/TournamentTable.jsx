@@ -1,7 +1,7 @@
 export default function TournamentTable({ participants = [] }) {
   if (participants.length === 0) {
     return (
-      <table className="w-[90%] text-yellow-200 border-collapse mx-auto">
+      <table className="w-[100%] text-yellow-200 border-collapse mx-auto">
         <thead>
           <tr>
             <th
@@ -17,9 +17,9 @@ export default function TournamentTable({ participants = [] }) {
   }
 
   return (
-    <table className="w-[90%] text-yellow-200 border-collapse mx-auto">
+    <table className="w-[100%] text-yellow-200 border-collapse mx-auto">
       <thead>
-        <tr className="bg-neutral-900">
+        <tr className="">
           <th className="uppercase text-2xl py-2 px-4 text-center">
             Participante
           </th>

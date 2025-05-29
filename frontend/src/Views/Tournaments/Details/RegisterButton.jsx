@@ -79,7 +79,7 @@ export default function RegisterButton({ tournamentId, token }) {
     }
   }
 
-  return (
+  return ( !isRegistered && (<>
     <button
       type="submit"
       disabled={loading || isRegistered}
@@ -97,5 +97,5 @@ export default function RegisterButton({ tournamentId, token }) {
         ? "Inscribiendo..."
         : "Inscribirse"}{" "}
     </button>
-  );
+  </>));
 }

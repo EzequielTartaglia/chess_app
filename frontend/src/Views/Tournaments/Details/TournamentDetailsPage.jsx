@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import RegisterButton from "./RegisterButton";
 import Footer from "@/components/Footer";
 import TournamentTable from "./TournamentTable";
+import CountdownTimer from "./CountdownTimer";
 
 export default async function TournamentDetailPage({ tournamentId }) {
   const cookieStore = await cookies();
@@ -86,11 +87,48 @@ export default async function TournamentDetailPage({ tournamentId }) {
 
   return (
     <>
-      <Navbar showBack={true} />
+      <Navbar showBack={true} text={<CountdownTimer isoDateTime={iso} />} />
+
       <div className="tournament-detail_page">
         <div className="tournament-detail">
-          <h1>{tournament.name}</h1>
-          <p>
+          {tournament.state === "pending" && token && (
+            <RegisterButton tournamentId={tournament.id} token={token} />
+          )}
+
+          {tournament.state === "pending" && !token && (
+            <p className="text-red-600">
+              Debes iniciar sesión para inscribirte.
+            </p>
+          )}
+
+          {/* Listado de participantes */}
+          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <section>
+              <TournamentTable participants={participants} />
+            </section>
+            <section>
+              <TournamentTable participants={participants} />
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <Footer
+        showSpectIcon={true}
+        showRankIcon={true}
+        showMarketplaceIcon={true}
+        showZettsIcon={true}
+        showShopIcon={true}
+        text=""
+        user={!!token}
+        userZetts={Number.parseInt(currentUserTotalPoints, 10) || 0}
+      />
+    </>
+  );
+}
+
+{
+  /*           <p>
             <strong>Descripción:</strong> {tournament.description}
           </p>
           <p>
@@ -107,36 +145,5 @@ export default async function TournamentDetailPage({ tournamentId }) {
           </p>
           <p>
             <strong>Estado:</strong> {stateLabel}
-          </p>
-
-          {tournament.state === "pending" && token && (
-            <RegisterButton tournamentId={tournament.id} token={token} />
-          )}
-
-          {tournament.state === "pending" && !token && (
-            <p className="text-red-600">
-              Debes iniciar sesión para inscribirte.
-            </p>
-          )}
-
-          {/* Listado de participantes */}
-          <section className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Participantes</h2>
-            <TournamentTable participants={participants} />
-          </section>
-        </div>
-      </div>
-
-      <Footer
-        showSpectIcon={true}
-        showRankIcon={true}
-        showMarketplaceIcon={true}
-        showZettsIcon={true}
-        showShopIcon={true}
-        text=""
-        user={!!token}
-        userZetts={Number.parseInt(currentUserTotalPoints, 10) || 0}
-      />
-    </>
-  );
+          </p> */
 }
