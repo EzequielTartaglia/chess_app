@@ -5,6 +5,7 @@ import RegisterButton from "./RegisterButton";
 import Footer from "@/components/Footer";
 import TournamentTable from "./TournamentTable";
 import CountdownTimer from "./CountdownTimer";
+import TournamentGamesTable from "./TournamentGamesTable";
 
 export default async function TournamentDetailPage({ tournamentId }) {
   const cookieStore = await cookies();
@@ -102,14 +103,23 @@ export default async function TournamentDetailPage({ tournamentId }) {
           )}
 
           {/* Listado de participantes */}
-          <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <section>
-              <TournamentTable participants={participants} />
-            </section>
-            <section>
-              <TournamentTable participants={participants} />
-            </section>
-          </div>
+         
+<div
+  className={`w-full mt-8 grid gap-4 ${
+    tournament.state === "pending" ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+  }`}
+>
+  <section className={tournament.state === "pending" ? "col-span-full" : ""}>
+    <TournamentTable participants={participants} />
+  </section>
+  {tournament.state === "in_progress" && (
+    <section>
+      <TournamentGamesTable participants={participants} />
+    </section>
+  )}
+</div>
+
+          
         </div>
       </div>
 
