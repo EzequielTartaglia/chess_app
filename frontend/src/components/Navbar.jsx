@@ -48,7 +48,7 @@ export default function Navbar({ showBack, text }) {
 
       {/* Logo empresarial alineado a la derecha */}
       <Link href="/" className="ml-auto">
-        <CompanyLogo />
+        <CompanyLogo className="text-[var(--background-yellow)]" />
       </Link>
 
       {/* Acciones */}

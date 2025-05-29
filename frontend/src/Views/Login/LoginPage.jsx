@@ -41,13 +41,13 @@ export default function LoginPage() {
   return (
     <div className="h-screen flex justify-center items-center login_page">
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-[650px] p-5">
-        <section className="hero text-center relative">
-          <CompanyLogo text="LOGO EMPRESA" />
-          <Link
-            className="closeBtn absolute top-0 right-0 p-1 cursor-pointer"
-            href={"/"}
-          >
-            <Image src={"/close.svg"} alt="close" width={25} height={25} />
+        <section className="hero relative flex items-center justify-center h-[150px]">
+          <div className="text-center">
+            <CompanyLogo className="text-black" />
+          </div>
+
+          <Link className="absolute top-2 right-2 p-1 cursor-pointer" href="/">
+            <Image src="/close.svg" alt="close" width={25} height={25} />
           </Link>
         </section>
 

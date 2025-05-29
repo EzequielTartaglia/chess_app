@@ -47,13 +47,13 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex justify-center overflow-auto md:items-center register_page">
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[500px] p-5">
-        <section className="hero relative">
-          <CompanyLogo text="LOGO EMPRESA" />
-          <Link
-            className="absolute top-0 right-0 cursor-pointer"
-            href={"/"}
-          >
-            <Image src={"/close.svg"} alt="close" width={50} height={50} />
+        <section className="hero relative flex items-center justify-center h-[150px]">
+          <div className="text-center">
+            <CompanyLogo className="text-black" />
+          </div>
+
+          <Link className="absolute top-2 right-2 p-1 cursor-pointer" href="/">
+            <Image src="/close.svg" alt="close" width={25} height={25} />
           </Link>
         </section>
 
