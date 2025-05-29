@@ -104,7 +104,7 @@ export default function TournamentsPage() {
   return (
     <>
       <Navbar />
-      <div className="tournaments_page">
+      <div className="tournaments_page mt-[70px]">
         {!loading && !error && (
           <div className="tournaments__filter">
             <label htmlFor="stateFilter">Filtrar por estado</label>
@@ -132,6 +132,7 @@ export default function TournamentsPage() {
             </div>
           ) : (
             <>
+              <div className="w-full overflow-x-auto mt-6" />
               <table
                 className="tournaments__table"
                 cellSpacing="0"
@@ -141,7 +142,11 @@ export default function TournamentsPage() {
                   {filterTournaments.length > 0 ? (
                     <tr>
                       <th>Torneo</th>
-                      <th>Fecha de inicio</th>
+                      <th className="px-4 py-3">
+                        <span className="block md:hidden">Inicio</span>
+                        <span className="hidden md:block">Fecha de inicio</span>
+                      </th>
+
                       <th style={{ textAlign: "left" }}>Modo</th>
                       <th>Premio</th>
                       <th>Estado</th>
