@@ -99,8 +99,16 @@ export default async function TournamentDetailPage({ tournamentId }) {
             timeStr={timeStr}
             stateLabel={stateLabel}
           />
-          {tournament.state === "pending" && token && (
-            <RegisterButton tournamentId={tournament.id} token={token} />
+          {tournament.state === "pending" && (
+            <div className="flex justify-center mt-4">
+              {token ? (
+                <RegisterButton tournamentId={tournament.id} token={token} />
+              ) : (
+                <p className="text-red-600 text-center">
+                  Debes iniciar sesión para inscribirte.
+                </p>
+              )}
+            </div>
           )}
 
           {tournament.state === "pending" && !token && (

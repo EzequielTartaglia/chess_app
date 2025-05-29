@@ -5,7 +5,7 @@ export default function TournamentInfoTable({
   stateLabel,
 }) {
   return (
-    <table className="w-[100%] text-yellow-200 border-collapse mx-auto mt-6">
+    <table className="w-[100%] text-[var(--background-yellow)] border-collapse mx-auto mt-6">
       <thead>
         <tr>
           <th colSpan={2} className="text-center text-2xl py-4 uppercase">

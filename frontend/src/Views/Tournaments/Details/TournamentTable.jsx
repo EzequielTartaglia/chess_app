@@ -1,7 +1,7 @@
 export default function TournamentTable({ participants = [] }) {
   if (participants.length === 0) {
     return (
-      <table className="w-[100%] text-yellow-200 border-collapse mx-auto">
+      <table className="w-[100%] text-[var(--background-yellow)] border-collapse mx-auto">
         <thead>
           <tr>
             <th
@@ -17,7 +17,7 @@ export default function TournamentTable({ participants = [] }) {
   }
 
   return (
-    <table className="w-[100%] text-yellow-200 border-collapse mx-auto">
+    <table className="w-[100%] text-[var(--background-yellow)] border-collapse mx-auto">
       <thead>
         <tr className="">
           <th className="uppercase text-2xl py-2 px-4 text-center">
@@ -39,7 +39,7 @@ export default function TournamentTable({ participants = [] }) {
           return (
             <tr
               key={participant.id}
-              className={`${bgColor} cursor-pointer transition-all duration-200 hover:bg-yellow-800`}
+              className={`${bgColor} cursor-pointer transition-all duration-200`}
             >
               <td className="text-lg py-2 px-4 text-center">{fullName}</td>
               <td className="text-lg py-2 px-4 text-center">

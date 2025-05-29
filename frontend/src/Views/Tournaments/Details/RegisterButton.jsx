@@ -7,45 +7,46 @@ export default function RegisterButton({ tournamentId, token }) {
   const [loading, setLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
-  useEffect(() => {
+  async function checkRegistration() {
     if (!token) return;
 
-    async function checkRegistration() {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_DJANGO_URL}/api/tournaments/${tournamentId}/participants/`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!res.ok) {
-          console.error("Error al obtener participantes");
-          return;
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_DJANGO_URL}/api/tournaments/${tournamentId}/participants/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          cache: "no-store",
         }
+      );
 
-        const participants = await res.json();
-        if (!participants.length) return;
-
-        const currentUserEmail = parseJwt(token).email;
-        if (!currentUserEmail) {
-          console.error("No se pudo extraer el email del token.");
-          return;
-        }
-
-        const found = participants.some(
-          (p) => p.user?.email === currentUserEmail
-        );
-
-        setIsRegistered(found);
-      } catch (error) {
-        console.error("Error al verificar inscripción:", error);
+      if (!res.ok) {
+        console.error("Error al obtener participantes");
+        return;
       }
-    }
 
+      const participants = await res.json();
+      if (!participants.length) return;
+
+      const currentUserEmail = parseJwt(token).email;
+      if (!currentUserEmail) {
+        console.error("No se pudo extraer el email del token.");
+        return;
+      }
+
+      const found = participants.some(
+        (p) => p.user?.email === currentUserEmail
+      );
+
+      setIsRegistered(found);
+    } catch (error) {
+      console.error("Error al verificar inscripción:", error);
+    }
+  }
+
+  useEffect(() => {
     checkRegistration();
   }, [tournamentId, token]);
 
@@ -69,8 +70,7 @@ export default function RegisterButton({ tournamentId, token }) {
         return;
       }
 
-      alert("¡Te has inscrito correctamente al torneo!");
-      setIsRegistered(true);
+      await checkRegistration();
     } catch (error) {
       console.error("Error al inscribirse:", error);
       alert("Ocurrió un error al intentar inscribirse.");
@@ -79,23 +79,22 @@ export default function RegisterButton({ tournamentId, token }) {
     }
   }
 
-  return ( !isRegistered && (<>
+  return (
     <button
       type="submit"
       disabled={loading || isRegistered}
       className={
         isRegistered
-          ? "px-4 font-bold text-[34px] h-[60px] bg-gray-600 text-white opacity-50 cursor-not-allowed"
-          : "px-4 font-bold text-[34px] h-[60px] bg-green-600 text-white"
+          ? "px-4 font-bold text-[34px] h-[60px] bg-[var(--background-footer)] text-[var(--background-yellow)] opacity-50 cursor-not-allowed"
+          : "px-4 font-bold text-[34px] h-[60px] bg-[var(--background-footer)] text-[var(--background-yellow)]"
       }
-      onClick={handleRegister}
+      onClick={!isRegistered ? handleRegister : undefined}
     >
-      {" "}
       {isRegistered
         ? "Ya estás inscrito"
         : loading
         ? "Inscribiendo..."
-        : "Inscribirse"}{" "}
+        : "Inscribirse"}
     </button>
-  </>));
+  );
 }
