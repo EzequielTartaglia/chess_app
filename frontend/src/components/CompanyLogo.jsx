@@ -1,4 +1,4 @@
-export default function CompanyLogo({ text = "LOGO EMPRESA", className = "" }) {
+export default function CompanyLogo({ text = "LOGO EMPRESA", className = "", classNameText = "" }) {
   return (
     <div
       className={`flex flex-row items-center gap-[11.35px] w-[226.89px] h-[40px] ${className}`}
@@ -19,7 +19,7 @@ export default function CompanyLogo({ text = "LOGO EMPRESA", className = "" }) {
         />
       </svg>
 
-      <h2 className="w-[190px] mt-[40px] h-[40px] font-extrabold text-[22.7px] leading-[40px] tracking-[-0.02em] text-current font-montserrat">
+      <h2 className={`w-[190px] h-[40px] font-extrabold text-[22.7px] leading-[40px] tracking-[-0.02em] text-current font-montserrat ${classNameText}`}>
         {text}
       </h2>
     </div>

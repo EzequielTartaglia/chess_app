@@ -49,7 +49,7 @@ export default function RegisterPage() {
       <div className="container border-3 border-border-color bg-background-yellow text-font-color-black max-w-md md:max-w-lg lg:max-w-[500px] p-5">
         <section className="hero relative flex items-center justify-center h-[150px]">
           <div className="text-center">
-            <CompanyLogo className="text-black" />
+            <CompanyLogo className="text-black" classNameText="mt-[40px]"/>
           </div>
 
           <Link className="absolute top-2 right-2 p-1 cursor-pointer" href="/">
