@@ -140,6 +140,7 @@ export default async function TournamentDetailPage({ tournamentId }) {
         </div>
       </div>
 
+
       <Footer
         showSpectIcon={true}
         showRankIcon={true}

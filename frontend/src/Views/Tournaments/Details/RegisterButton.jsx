@@ -85,16 +85,12 @@ export default function RegisterButton({ tournamentId, token }) {
       disabled={loading || isRegistered}
       className={
         isRegistered
-          ? "px-4 font-bold text-[34px] h-[60px] bg-[var(--background-footer)] text-[var(--background-yellow)] opacity-50 cursor-not-allowed"
-          : "px-4 font-bold text-[34px] h-[60px] bg-[var(--background-footer)] text-[var(--background-yellow)]"
+          ? "mt-4 w-full w-[15%] min-h-[70px] h-full flex items-center justify-center gap-[15px] text-gray-300 font-bold uppercase text-[1.5rem]  bg-[var(--border-color-light)] transition-all duration-300 ease-in-out opacity-50 cursor-not-allowed"
+          : "mt-4 w-full max-w-[15%]  min-h-[70px]  h-full flex items-center justify-center gap-[15px] text-[var(--background-footer)] hover:text-[var(--font-color-yellow)] font-bold uppercase text-[1.5rem] cursor-pointer bg-[var(--font-color-yellow)] hover:bg-[var(--background-footer)] transition-all duration-300 ease-in-out"
       }
       onClick={!isRegistered ? handleRegister : undefined}
     >
-      {isRegistered
-        ? "Ya estás inscrito"
-        : loading
-        ? "Inscribiendo..."
-        : "Inscribirse"}
+      {isRegistered ? "Inscrito" : loading ? "Inscribiendo..." : "Inscribirse"}
     </button>
   );
 }

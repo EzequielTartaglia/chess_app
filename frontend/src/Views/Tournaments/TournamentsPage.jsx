@@ -167,7 +167,10 @@ export default function TournamentsPage() {
                     ))}
                 </tbody>
               </table>
-              <button onClick={() => router.push("/tournaments/create")}>
+              <button
+                onClick={() => router.push("/tournaments/create")}
+                className="mt-4 w-full max-w-[15%] min-h-[70px] h-full flex items-center justify-center gap-[15px] bg-[var(--border-color)] text-[var(--background-yellow)] font-bold uppercase text-[1.5rem] cursor-pointer hover:bg-[var(--background)] transition-all duration-300 ease-in-out"
+              >
                 Crear
               </button>
             </>
