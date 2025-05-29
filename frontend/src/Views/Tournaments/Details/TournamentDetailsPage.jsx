@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import TournamentTable from "./TournamentTable";
 import CountdownTimer from "./CountdownTimer";
 import TournamentGamesTable from "./TournamentGamesTable";
+import TournamentInfoTable from "./TournamentInfoTable";
 
 export default async function TournamentDetailPage({ tournamentId }) {
   const cookieStore = await cookies();
@@ -92,6 +93,12 @@ export default async function TournamentDetailPage({ tournamentId }) {
 
       <div className="tournament-detail_page">
         <div className="tournament-detail">
+          <TournamentInfoTable
+            tournament={tournament}
+            dateStr={dateStr}
+            timeStr={timeStr}
+            stateLabel={stateLabel}
+          />
           {tournament.state === "pending" && token && (
             <RegisterButton tournamentId={tournament.id} token={token} />
           )}
@@ -103,23 +110,25 @@ export default async function TournamentDetailPage({ tournamentId }) {
           )}
 
           {/* Listado de participantes */}
-         
-<div
-  className={`w-full mt-8 grid gap-4 ${
-    tournament.state === "pending" ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
-  }`}
->
-  <section className={tournament.state === "pending" ? "col-span-full" : ""}>
-    <TournamentTable participants={participants} />
-  </section>
-  {tournament.state === "in_progress" && (
-    <section>
-      <TournamentGamesTable participants={participants} />
-    </section>
-  )}
-</div>
 
-          
+          <div
+            className={`w-full mt-8 grid gap-4 ${
+              tournament.state === "pending"
+                ? "grid-cols-1"
+                : "grid-cols-1 md:grid-cols-2"
+            }`}
+          >
+            <section
+              className={tournament.state === "pending" ? "col-span-full" : ""}
+            >
+              <TournamentTable participants={participants} />
+            </section>
+            {tournament.state === "in_progress" && (
+              <section>
+                <TournamentGamesTable participants={participants} />
+              </section>
+            )}
+          </div>
         </div>
       </div>
 
@@ -135,25 +144,4 @@ export default async function TournamentDetailPage({ tournamentId }) {
       />
     </>
   );
-}
-
-{
-  /*           <p>
-            <strong>Descripción:</strong> {tournament.description}
-          </p>
-          <p>
-            <strong>Fecha y hora de inicio:</strong> {dateStr} {timeStr}
-          </p>
-          <p>
-            <strong>Modo:</strong> {tournament.mode}
-          </p>
-          <p>
-            <strong>Jugadores:</strong> {tournament.players}
-          </p>
-          <p>
-            <strong>Premio:</strong> {tournament.prize} PTS
-          </p>
-          <p>
-            <strong>Estado:</strong> {stateLabel}
-          </p> */
 }
